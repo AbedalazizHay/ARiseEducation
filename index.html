@@ -1,19 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Simple HTML Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AR Curriculum for Grade 3</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f7f9fc;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img, .card video {
+      width: 100%;
+      display: block;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #0072ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #e8f0fe;
+      color: #666;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My Page</h1>
-    <p>This is a simple HTML page created as an example.</p>
+  <header>
+    <h1>Grade 3 AR Curriculum</h1>
+    <p>Explore our augmented reality scenes that bring learning to life</p>
+  </header>
 
-    <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
-    </ul>
-    <button>its work my friend</button>
-    <p>Thanks for visiting!</p>
+  <div class="container">
+    <div class="gallery">
+      <!-- Image Card Example -->
+      <div class="card">
+        <img src="images/math-ar-scene.jpg" alt="Math AR Scene">
+        <div class="card-content">
+          <h3>Math: 3D Shapes Exploration</h3>
+        </div>
+      </div>
+
+      <!-- Video Card Example -->
+      <div class="card">
+        <video controls>
+          <source src="videos/science-ar-demo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="card-content">
+          <h3>Science: Solar System in AR</h3>
+        </div>
+      </div>
+
+      <!-- More cards (just duplicate) -->
+      <div class="card">
+        <img src="images/story-ar.jpg" alt="Story Time AR">
+        <div class="card-content">
+          <h3>Stories: Interactive Reading</h3>
+        </div>
+      </div>
+
+      <div class="card">
+        <video controls>
+          <source src="videos/animal-habitat.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="card-content">
+          <h3>Biology: Animal Habitats</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Abdalaziz Hay – Senior Project | AUST
+  </footer>
 </body>
 </html>
