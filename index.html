@@ -1,414 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARise Education</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Basic Reset & General Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif; /* Change to your desired font */
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Accessibility Widget */
-        .accessibility-widget {
-            position: fixed;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            background-color: #d30067; /* Adjust color as in image (pink/magenta) */
-            padding: 10px;
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-            z-index: 1000;
-        }
-
-        .accessibility-widget button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px; /* Adjust size */
-            cursor: pointer;
-        }
-
-        /* Header */
-        header {
-            background-color: #fff;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 50px; /* Adjust as needed */
-            margin-right: 10px;
-            /* You'll need to create or find a similar logo image */
-        }
-
-        .logo h1 {
-            font-size: 1.5em; /* Adjust as needed */
-            color: #2c3e50; /* Dark blue/grey */
-            font-weight: bold;
-        }
-
-        .logo .logo-subtitle {
-            display: block;
-            font-size: 0.8em;
-            font-weight: normal;
-            color: #555;
-        }
-
-        nav ul {
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 20px; /* Adjust spacing */
-        }
-
-        nav ul li a {
-            color: #333;
-            font-weight: 500;
-            font-size: 0.9em; /* Adjust font size */
-            padding-bottom: 5px;
-            transition: color 0.3s ease, border-bottom-color 0.3s ease;
-        }
-
-        nav ul li a.active,
-        nav ul li a:hover {
-            color: #e83e8c; /* Pink color from the image for active/hover */
-            border-bottom: 2px solid #e83e8c;
-        }
-
-        nav ul li a i {
-            margin-left: 5px;
-            font-size: 0.8em;
-        }
-
-        .phone-button {
-            background-color: #ff9900; /* Orange color */
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9em;
-            transition: background-color 0.3s ease;
-        }
-
-        .phone-button:hover {
-            background-color: #e68a00; /* Darker orange for hover */
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 70vh; /* Adjust height as needed */
-            color: white;
-            display: flex;
-            align-items: center; /* Vertically center content if needed, adjust with text box */
-        }
-
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('path-to-your-hero-image.jpg'); /* <<< --- REPLACE THIS --- */
-            background-size: cover;
-            background-position: center;
-            z-index: -1; /* Behind the content */
-        }
-
-        .hero-background::after { /* Optional: Darken the image slightly for better text contrast */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity */
-        }
-
-        .hero-content {
-            display: flex;
-            justify-content: flex-end; /* Align text box to the right */
-            width: 100%;
-        }
-
-        .hero-text-box {
-            background-color: rgba(20, 30, 70, 0.85); /* Dark blue with transparency */
-            padding: 40px;
-            border-radius: 8px;
-            max-width: 500px; /* Adjust as needed */
-            text-align: left;
-        }
-
-        .hero-text-box h2 {
-            font-size: 2.8em; /* Adjust as needed */
-            margin-bottom: 20px;
-            line-height: 1.2;
-            font-weight: bold;
-        }
-
-        .hero-text-box p {
-            font-size: 1.5em; /* Adjust as needed */
-            margin-bottom: 30px;
-        }
-
-        .hero-buttons .btn {
-            padding: 12px 25px;
-            margin-right: 15px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1em;
-            transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .hero-buttons .btn i {
-            margin-right: 8px;
-        }
-
-        .btn-survey {
-            background-color: #fff;
-            color: #333;
-            border: 2px solid #ddd;
-        }
-
-        .btn-survey:hover {
-            background-color: #f0f0f0;
-            border-color: #ccc;
-        }
-
-        .btn-schedule {
-            background-color: #ff9900; /* Orange color */
-            color: #fff;
-        }
-
-        .btn-schedule:hover {
-            background-color: #e68a00; /* Darker orange */
-            opacity: 0.9;
-        }
-
-
-        /* Floating Action Button */
-        .floating-action-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #007bff; /* Adjust as needed, the image shows a light teal/blue */
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        .floating-action-button:hover {
-            background-color: #0056b3; /* Darker shade for hover */
-        }
-
-
-        /* Footer */
-        footer {
-            background-color: #f8f9fa; /* Light grey background */
-            color: #6c757d; /* Muted text color */
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px; /* Give some space from content */
-            border-top: 1px solid #e7e7e7;
-        }
-
-        /* Responsive Adjustments (Basic Example) */
-        @media (max-width: 992px) {
-            .header-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav {
-                margin-top: 15px;
-                width: 100%;
-            }
-
-            nav ul {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            nav ul li {
-                margin-left: 0;
-                margin-bottom: 10px;
-                text-align: left;
-            }
-
-            nav ul li a {
-                display: block; /* Make links take full width for easier tapping */
-            }
-
-            .phone-button {
-                margin-top: 15px;
-            }
-
-            .hero-content {
-                justify-content: center; /* Center content on smaller screens */
-                text-align: center;
-            }
-
-            .hero-text-box {
-                margin: 20px; /* Add some margin */
-                padding: 30px;
-                text-align: center;
-            }
-
-            .hero-text-box h2 {
-                font-size: 2.2em;
-            }
-            .hero-text-box p {
-                font-size: 1.2em;
-            }
-
-            .hero-buttons {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-buttons .btn {
-                margin-right: 0;
-                margin-bottom: 10px;
-                width: 80%; /* Make buttons wider */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .logo h1 {
-                font-size: 1.2em;
-            }
-            .logo img {
-                height: auto;
-                width: 250px;
-            }
-            .hero-text-box h2 {
-                font-size: 1.8em;
-            }
-            .hero-text-box p {
-                font-size: 1em;
-            }
-             .phone-button {
-                width: 100%;
-                text-align: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARise Education</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div class="accessibility-widget">
-        <button aria-label="Accessibility Options">
-            <i class="fas fa-universal-access"></i>
-        </button>
-    </div>
-
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <img src="images/logo.png" alt="ARise Education Logo"> <!-- Replace with your logo -->
-                <h1>The Renaissance <span class="logo-subtitle">of Florence</span></h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#" class="active">HOME</a></li>
-                    <li><a href="#">ABOUT <i class="fas fa-caret-down"></i></a></li>
-                    <li><a href="#">ASSISTED LIVING</a></li>
-                    <li><a href="#">APARTMENTS</a></li>
-                    <li><a href="#">DINING</a></li>
-                    <li><a href="#">ACTIVITIES</a></li>
-                    <li><a href="#">PHOTOS</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                </ul>
-            </nav>
-            <a href="tel:2565308124" class="phone-button">(256) 530-8124</a>
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+        <div class="app-brand">
+          <img src="images/logo.png" alt="App Logo" class="app-logo" />
+          <h1>ARise Education</h1>
         </div>
-    </header>
+          <p>Transforming the Lebanese curriculum into an interactive AR experience for grade 3 students</p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" id="explore-subjects-btn">
+              Explore Subjects <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-outline" id="meet-team-btn">
+              Meet Our Team
+            </button>
+          </div>
+        </div>
+        <div class="hero-preview">
+          <div class="preview-box">
+           
+            <img src="images/ar.jpeg" alt="My Photo" style="width: 100%;height: 100%;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <main>
-        <section class="hero">
-            <div class="hero-background">
+  <!-- Main Content -->
+  <div class="container main-content">
+    <!-- Subjects Showcase -->
+    <section id="subjects" class="section">
+      <div class="section-header">
+        <h2>AR Learning Subjects</h2>
+        <p>Explore our interactive subjects designed specifically for the Lebanese curriculum for grade 3 students</p>
+      </div>
+
+      <div class="carousel">
+        <div class="carousel-container">
+          <!-- Subject 1 -->
+          <div class="carousel-item">
+            <div class="card">
+              <div class="card-banner math-gradient"></div>
+              <div class="card-header">
+                <h3>Mathematics</h3>
+                <p>Interactive AR experiences for learning shapes, numbers, and basic arithmetic operations.</p>
+              </div>
+              <div class="card-content">
+                <div class="topics-grid">
+                  <div class="topic">Geometry</div>
+                  <div class="topic">Addition & Subtraction</div>
+                  <div class="topic">Multiplication</div>
+                  <div class="topic">Fractions</div>
                 </div>
-            <div class="hero-content container">
-                <div class="hero-text-box">
-                    <h2>Welcome to The <br>Renaissance of Florence</h2>
-                    <p>Assisted Living in Florence, AL</p>
-                    <div class="hero-buttons">
-                        <a href="#" class="btn btn-survey"><i class="fas fa-file-alt"></i> Take Our Survey</a>
-                        <a href="#" class="btn btn-schedule"><i class="fas fa-calendar-alt"></i> Schedule a Tour</a>
-                    </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-full math-gradient" data-subject-id="1">
+                  <i class="fas fa-image"></i> Explore Mathematics
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subject 2 -->
+          <div class="carousel-item">
+            <div class="card">
+              <div class="card-banner science-gradient"></div>
+              <div class="card-header">
+                <h3>Science</h3>
+                <p>Engaging AR visualizations of natural phenomena, human body, and environmental systems.</p>
+              </div>
+              <div class="card-content">
+                <div class="topics-grid">
+                  <div class="topic">Plants & Animals</div>
+                  <div class="topic">Human Body</div>
+                  <div class="topic">Earth & Space</div>
+                  <div class="topic">Simple Machines</div>
                 </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-full science-gradient" data-subject-id="2">
+                  <i class="fas fa-image"></i> Explore Science
+                </button>
+              </div>
             </div>
-        </section>
-        </main>
+          </div>
+        </div>
+        
+        <div class="carousel-controls">
+          <button class="carousel-prev">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <button class="carousel-next">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
 
-    <button class="floating-action-button" aria-label="Chat">
-        <i class="fas fa-comment-dots"></i>
-    </button>
+    <!-- Features Section -->
+    <section id="features" class="section">
+      <div class="section-header">
+        <h2>Key Features</h2>
+        <p>Discover how ARise Education is revolutionizing learning experiences</p>
+      </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; <script>document.write(new Date().getFullYear());</script> The Renaissance of Florence. All Rights Reserved.</p>
-            </div>
-    </footer>
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <div class="feature-header">
+            <h3>Interactive 3D Models</h3>
+          </div>
+          <p>Bring textbook diagrams to life with interactive 3D models that students can manipulate.</p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <div class="feature-header">
+            <h3>Lebanese Curriculum Aligned</h3>
+          </div>
+          <p>Content specifically designed to match the Lebanese educational standards for grade 3.</p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <div class="feature-header">
+            <h3>Progress Tracking</h3>
+          </div>
+          <p>Monitor student engagement and understanding with built-in assessment tools.</p>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon">📶</div>
+          <div class="feature-header">
+            <h3>Offline Mode</h3>
+          </div>
+          <p>Download content for use without internet connection, ensuring accessibility.</p>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-icon">👩‍🏫</div>
+          <div class="feature-header">
+            <h3>Classroom Integration</h3>
+          </div>
+          <p>Tools for teachers to integrate AR experiences into their lesson plans effectively.</p>
+        </div>
+      </div>
+    </section>
 
+    <!-- Team Section -->
+    <section id="team" class="section">
+      <div class="section-header">
+        <h2>Meet Our Team</h2>
+        <p>A group of four dedicated Computer Science students bringing AR technology to education</p>
+      </div>
+
+      <div class="team-grid">
+        <!-- Team Member 1 -->
+        <div class="team-card">
+          <div class="team-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <h3>Team Member 1</h3>
+          <p class="team-role">Frontend Developer</p>
+          <p>Computer Science student specialized in UI/UX and AR development.</p>
+        </div>
+        
+        <!-- Team Member 2 -->
+        <div class="team-card">
+          <div class="team-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <h3>Team Member 2</h3>
+          <p class="team-role">AR Developer</p>
+          <p>Computer Science student with expertise in augmented reality and 3D modeling.</p>
+        </div>
+        
+        <!-- Team Member 3 -->
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="images/abed.jpeg" alt="Team Member Name">
+          </div>
+          <h3>Abdalaziz Hay</h3>
+          <p class="team-role">Backend Developer</p>
+          <p>Computer Science student focusing on system architecture and testing.</p>
+        </div>
+        
+        <!-- Team Member 4 -->
+        <div class="team-card">
+          <div class="team-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <h3>Team Member 4</h3>
+          <p class="team-role">Content Creator</p>
+          <p>Computer Science student specializing in educational content and curriculum adaptation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+        <p>Interested in implementing ARise Education? We'd love to hear from you!</p>
+      </div>
+
+      <div class="contact-form-container">
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="What is this regarding?" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" placeholder="Tell us how we can help you..." required></textarea>
+          </div>
+          
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-envelope"></i> Send Email
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="contact-info">
+    
+      </div>
+    </section>
+  </div>
+
+  <!-- Dialogs -->
+  <div id="subject-dialog" class="dialog">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h2 id="dialog-title"></h2>
+        <button class="close-dialog">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <div class="dialog-image-container">
+          <img id="dialog-image" src="" alt="AR App Screenshot">
+        </div>
+        <p id="dialog-description" class="dialog-text"></p>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <script src="script.js"></script>
 </body>
 </html>
