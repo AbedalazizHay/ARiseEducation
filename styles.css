@@ -31,6 +31,8 @@ body {
   align-items: center;
   gap: 1rem; /* space between logo and heading */
   justify-content: flex-start; 
+   font-family: 'Playfair Display', serif;
+  
   /*space between logo and text */
 }
 
