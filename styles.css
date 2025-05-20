@@ -118,7 +118,7 @@ h3 {
 /* Hero Section */
 .hero {
   position: relative;
-  background: linear-gradient(to right, #9333ea, #ec4899, #f97316);
+  background: lch(78.42% 33.31 232.31);
   color: white;
   padding: 6rem 1rem;
   overflow: hidden;
@@ -226,7 +226,7 @@ h3 {
 }
 
 .science-gradient {
-  background: linear-gradient(to right, #22c55e, #2dd4bf);
+  background: linear-gradient(to right, #3b82f6, #22d3ee);
 }
 
 .card-header {

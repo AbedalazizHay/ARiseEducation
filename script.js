@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       id: 1,
       title: "Mathematics",
-      description: "This is a preview of our mathematics AR application for grade 3 students. The app provides interactive mathematics learning experiences aligned with the Lebanese curriculum.",
+      description: "This is a preview of our mathematics AR application for grade 3 students. The app offers interactive learning experiences that help students identify and differentiate between various shapes in mathematics.",
       imageSrc: "images/math.jpeg"
     },
     {
       id: 2,
       title: "Science",
-      description: "This is a preview of our science AR application for grade 3 students. The app provides interactive science learning experiences aligned with the Lebanese curriculum.",
+      description: "This is a preview of our science AR application for grade 3 students. The app provides interactive science learning experiences about human body.",
       imageSrc: "images/hart.jpeg"
     }
   ];
